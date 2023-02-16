@@ -31,7 +31,7 @@ new Vue({
 axios.defaults.withCredentials = true;
 
 axios.defaults.timeout = 10000;
-
+axios.defaults.baseURL = '/api'
 axios.interceptors.response.use(resp =>{
   return resp;
 },error=>{

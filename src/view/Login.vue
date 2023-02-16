@@ -52,9 +52,8 @@
               if(valid){
 
                 //axios
-                let that = this;
                 let data = {usersname:this.form.username,password:this.form.username,position:this.form.position}
-                that.$axios.get("http://127.0.0.1:8080/Login",data)
+                this.$axios.post("/Login",data)
                   .then((response)=>{
                     if(response.data == 'ok'){
                       alert(response.data);
@@ -62,7 +61,6 @@
                   }).catch((error)=>{
                     alert(error);
                   })
-
                 alert('submit!');
               }else{
                 console.log('error');
