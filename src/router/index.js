@@ -13,10 +13,6 @@ const routes = [
         component:()=>import('../view/Login.vue')
     },
     {
-        path:'/Register',
-        component:()=>import('../view/Register.vue')
-    },
-    {
         path:'/Index',
         component:()=>import('../view/BspIndex.vue')
     }

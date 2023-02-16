@@ -8,13 +8,13 @@ import 'element-ui/lib/theme-chalk/index.css'
 import md5 from 'js-md5'
 import MetaInfo from 'vue-meta-info'
 import Login from './view/Login.vue'
-import Reg from './view/Register.vue'
+
 
 Vue.use(ElementUI)
 Vue.use(MetaInfo)
 
 Vue.config.productionTip = false
-Vue.prototype.axios = axios;
+Vue.prototype.$axios = axios;
 Vue.prototype.$md5 = md5;
 
 new Vue({
@@ -25,6 +25,8 @@ new Vue({
 
   render: h => h(App),
 }).$mount('#app')
+
+
 
 axios.defaults.withCredentials = true;
 

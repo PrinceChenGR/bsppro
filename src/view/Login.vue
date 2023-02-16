@@ -1,20 +1,28 @@
 <template>
   <div class="login-wrap">
-      <el-form  class="login-container">
+      <el-form :model="form" :rules="rules" ref="form" class="login-container">
        <h1 class="title">用户登录</h1>
-        <el-form-item >
-          <el-input type="text" placeholder="用户账号" v-model="username" auto-complete="off"></el-input>
+        <el-form-item prop="username">
+          <el-input type="text" placeholder="用户账号" v-model="form.username"  ></el-input>
         </el-form-item>
-        <el-form-item >
-          <el-input type="password" placeholder="密码" v-model="password" auto-complete="off"></el-input>
+        <el-form-item prop="password">
+          <el-input type="password" placeholder="密码" v-model="form.password" ></el-input>
         </el-form-item>
+        <el-form-item label="权限" prop="position">
+    <el-radio-group v-model="form.position">
+      <el-radio label="技工"></el-radio>
+      <el-radio label="员工"></el-radio>
+      <el-radio label="超级Admin"></el-radio>
+    </el-radio-group>
+  </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="doLogin" style="width: 100%;">登录</el-button>
+          <el-button type="primary" @click="doLogin('form')" style="width: 100%;">登录</el-button>
            <el-row style="text-align: center; margin-top: 10px;">
-             <el-link type="primary" @click="toRegister">用户注册</el-link>
                <el-link type="primary">忘记密码</el-link>
            </el-row>
         </el-form-item>
+        
+  
       </el-form>
   </div>
 </template>
@@ -25,16 +33,42 @@
     name:'Login',
     data:function(){
       return{
-        username:'admin',
-        password:'123'
+        form:{
+          username:'',
+          password:'',
+          position:''
+        },
+        rules:{
+          username:[{required: true, message: '请输入账号！', trigger: 'blur'}],
+          password:[{required: true, message: '请输入密码！', trigger: 'blur'}],
+          position:[{required: true, message: '请选择登录权限类型！', trigger: 'change'}]
+        }
+        
       }
     },
     methods:{
-        doLogin:function(){
-            
-        },
-        toRegister(){
-             this.$router.push('/Register')
+        doLogin:function(from){
+            this.$refs[from].validate((valid)=>{
+              if(valid){
+
+                //axios
+                let that = this;
+                let data = {usersname:this.form.username,password:this.form.username,position:this.form.position}
+                that.$axios.get("http://127.0.0.1:8080/Login",data)
+                  .then((response)=>{
+                    if(response.data == 'ok'){
+                      alert(response.data);
+                    }
+                  }).catch((error)=>{
+                    alert(error);
+                  })
+
+                alert('submit!');
+              }else{
+                console.log('error');
+                return false;
+              }
+            })
         }
     }
   }
