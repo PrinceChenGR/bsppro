@@ -35,5 +35,5 @@ axios.defaults.baseURL = '/api'
 axios.interceptors.response.use(resp =>{
   return resp;
 },error=>{
-  alert('服务器异常:'+error.message)
+  alert('服务器异常:'+error.message) 
 })

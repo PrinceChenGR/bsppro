@@ -52,11 +52,20 @@
               if(valid){
 
                 //axios
-                let data = {usersname:this.form.username,password:this.form.username,position:this.form.position}
+                let data = {username:this.form.username,password:this.form.password,position:this.form.position}
                 this.$axios.post("/Login",data)
                   .then((response)=>{
-                    if(response.data == 'ok'){
+                    if(response.data == '超级Admin'){
                       alert(response.data);
+                    }
+                    if(response.data == '技工'){
+                      alert(response.data);
+                    }
+                    if(response.data == '员工'){
+                      alert(response.data)
+                    }
+                    if(response.data == '200'){
+                      alert('密码或账号不正确，登录失败！')
                     }
                   }).catch((error)=>{
                     alert(error);
