@@ -7,9 +7,14 @@ Vue.use(Vuex)
 //plugins:[persistedState({storage: window.sessionStorage})]
 
 const state = {
+    LoginType:""
 
 }
 const mutations = {
+    saveLoginType(state,newVal){
+        state.LoginType = newVal
+        sessionStorage.getItem('LoginType',newVal)
+    }
     
 };
 const actions = {

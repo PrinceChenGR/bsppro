@@ -8,10 +8,13 @@ import 'element-ui/lib/theme-chalk/index.css'
 import md5 from 'js-md5'
 import MetaInfo from 'vue-meta-info'
 import Login from './view/Login.vue'
+import Avue from '@smallwei/avue'
+import '@smallwei/avue/lib/index.css'
 
-
+Vue.use(Avue)
 Vue.use(ElementUI)
 Vue.use(MetaInfo)
+Vue.use(Avue,{axios})
 
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios;

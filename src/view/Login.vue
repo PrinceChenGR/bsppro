@@ -42,7 +42,8 @@
           username:[{required: true, message: '请输入账号！', trigger: 'blur'}],
           password:[{required: true, message: '请输入密码！', trigger: 'blur'}],
           position:[{required: true, message: '请选择登录权限类型！', trigger: 'change'}]
-        }
+        },
+        Logintype:''
         
       }
     },
@@ -57,12 +58,15 @@
                   .then((response)=>{
                     if(response.data == '超级Admin'){
                       alert(response.data);
+                      this.skipIndex('超级Admin')
                     }
                     if(response.data == '技工'){
                       alert(response.data);
+                      this.skipIndex('技工')
                     }
                     if(response.data == '员工'){
                       alert(response.data)
+                      this.skipIndex('员工')
                     }
                     if(response.data == '200'){
                       alert('密码或账号不正确，登录失败！')
@@ -76,8 +80,14 @@
                 return false;
               }
             })
+        },
+        //
+        skipIndex(type){
+          localStorage.setItem("LoginType",type)
+          this.$router.push('/Index')
         }
     }
+
   }
  
 </script>

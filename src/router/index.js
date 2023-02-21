@@ -14,7 +14,13 @@ const routes = [
     },
     {
         path:'/Index',
-        component:()=>import('../view/BspIndex.vue')
+        component:()=>import('../view/BspIndex.vue'),
+        children:[
+            {
+                path:'/Sy',
+                component:()=>import('../view/Index.vue')
+            }
+        ]
     }
 ]
 
