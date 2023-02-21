@@ -15,37 +15,37 @@ data() {
             click: function (item) {
               alert(JSON.stringify(item));
             },
-            title: '分类统计',
+            title: '结算次数',
             subtitle: '实时',
-            count: 7993,
+            count: 5,
             allcount: 10222,
-            text: '当前分类总记录数',
+            text: '今日前台结算的次数',
             color: 'rgb(27, 201, 142)',
-            key: '类'
+            key: '结算'
           },
           {
             click: function (item) {
               alert(JSON.stringify(item));
             },
-            title: '附件统计',
+            title: '接车次数',
             subtitle: '实时',
             count: 3112,
             allcount: 10222,
-            text: '当前上传的附件数',
+            text: '今日接车的次数',
             color: 'rgb(230, 71, 88)',
-            key: '附'
+            key: '接车'
           },
           {
             click: function (item) {
               alert(JSON.stringify(item));
             },
-            title: '文章统计',
+            title: '维修台次',
             subtitle: '实时',
             count: 908,
             allcount: 10222,
-            text: '评论次数',
+            text: '今日维修的台次',
             color: 'rgb(178, 159, 255)',
-            key: '评'
+            key: '维修'
           }
         ]
       }
@@ -73,6 +73,6 @@ watch: {
 </script>
 <style  scoped>
 /*@import url(); 引入公共css类*/
-@import '@smallwei/avue/lib/index.css';
+
 
 </style>
